@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock title%}
+
+{% block content %}
+<nav class="navbar navbar-light bg-light justify-content-between">
+  <a class="navbar-brand text-success">Your score is {{session['score']}}</a>
+</nav>
+
+<div class="card">
+  <div class="card-header">
+      {{ "Category: " + session['clue']['category']['title']}}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{"Question: " + session['clue']['question'] + "?"}}</h5>
+    <p class="card-text"> Value: {{session['clue']['value']}}</p>
+  </div>
+</div>
+
+
+<form class="form-inline" action = '/results' method = 'POST'>
+    <input class="form-control mr-sm-2" name="input_answer" type="search" placeholder="Answer.." aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Submit</button>
+  </form>
+<!-- <h1>Your score is {{session['score']}}</h1> -->
+{% endblock content%}
